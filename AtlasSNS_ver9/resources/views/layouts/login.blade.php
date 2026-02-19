@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
+  <!-- <link rel="stylesheet" href="{{ asset('css/logout.css') }} "> -->
+  <link rel="stylesheet" href="{{ asset('css/modal.css') }} ">
   <!--スマホ,タブレット対応-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -25,36 +27,52 @@
 </head>
 
 <body>
-  <header>
-    @include('layouts.navigation')
-  </header>
-  <!-- Page Content -->
-  <div id="row">
-    <div id="container">
-      {{ $slot }}
-    </div>
-    <div id="side-bar">
-      <div id="confirm">
-        <p>〇〇さんの</p>
-        <div>
-          <p>フォロー数</p>
-          <p>〇〇名</p>
+    <header>
+        @include('layouts.navigation')
+    </header>
+
+    <div id="mainRow">
+        <div id="mainContainer">
+            {{ $slot }}
         </div>
-        <p class="btn"><a href="">フォローリスト</a></p>
-        <div>
-          <p>フォロワー数</p>
-          <p>〇〇名</p>
-        </div>
-        <p class="btn"><a href="">フォロワーリスト</a></p>
-      </div>
-      <p class="btn"><a href="">ユーザー検索</a></p>
+
+        <aside id="sideBr">
+            <div class="side_content">
+                <p class="side_username">{{ Auth::user()->username }}さんの</p>
+
+                <div class="side_row">
+                    <p>フォロー数</p>
+                    <p>{{ Auth::user()->follows()->count() }}人</p>
+                </div>
+
+                <div class="side_btn_container">
+                    <a href="/follow-list" class="side_btn">フォローリスト</a>
+                </div>
+
+                <div class="side_row">
+                    <p>フォロワー数</p>
+                    <p>{{ Auth::user()->followers()->count() }}人</p>
+                </div>
+
+                <div class="side_btn_container">
+                    <a href="/follower-list" class="side_btn">フォロワーリスト</a>
+                </div>
+            </div>
+
+            <hr class="side_separator">
+
+            <div class="side_search_container">
+                <a href="/search" class="side_search_btn">ユーザー検索</a>
+            </div>
+        </aside>
     </div>
-  </div>
-  <footer>
-  </footer>
-  <script src="{{ asset('js/app.js') }}"></script>
-  <script src="JavaScriptファイルのURL"></script>
-  <script src="JavaScriptファイルのURL"></script>
+
+    <footer>
+    </footer>
+
+    <script src="{{ asset('js/jquery-4.0.0.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/modal.js') }}"></script>
 </body>
 
 </html>

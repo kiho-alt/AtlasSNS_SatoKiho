@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+
+    //ホワイトリスト
+    protected $fillable = [
+        'user_id',
+        'post',
+    ];
+
+    //ユーザーと投稿をリレーション
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

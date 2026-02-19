@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;

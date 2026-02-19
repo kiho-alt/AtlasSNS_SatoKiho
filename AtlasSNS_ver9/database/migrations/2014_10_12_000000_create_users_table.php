@@ -14,9 +14,9 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id(); // 自動インクリメントの符号なし整数のプライマリキー
+            $table->id();
             $table->string('username', 255);
-            $table->string('email', 255)->unique(); // 一意制約
+            $table->string('email', 255)->unique();
             $table->string('password', 255);
             $table->string('bio', 400)->nullable();
             $table->string('icon_image', 255)->default('icon1.png');

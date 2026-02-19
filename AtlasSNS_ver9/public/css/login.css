@@ -1,0 +1,166 @@
+@charset "utf-8";
+
+
+
+/* ログイン画面ーーーーーーーーーーーーーーーーーーーーーー */
+
+body {
+    margin: 0;
+    background: linear-gradient(to bottom, #2da6df 0%, #d9d65c 100%) fixed;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+}
+
+header {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header h1 {
+    width: 300px;
+}
+
+header p {
+    font-size: 33px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.login_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form_box {
+    background-color: rgba(122, 148, 114, 0.3);
+    padding: 40px;
+    border-radius: 12px;
+    width: 400px;
+    color: #fff;
+}
+
+.welcome_text {
+    font-size: 21px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 共通フォーム要素 */
+.input_control {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: text;
+    color: #000;
+    box-sizing: border-box;
+}
+
+/* 共通ボタン */
+.btn_submit {
+    background-color: #ff4d61;
+    color: #fff;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+.register_link {
+    text-align: center;
+    margin-top: 80px;
+    clear: both;
+}
+
+.register_link a {
+    color: #fff;
+}
+
+.login_box .error_message_container {
+    background-color: transparent;
+    padding: 0;
+}
+
+.form_box .error_message {
+    color: #ff4d61;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    margin: 0;
+    line-height: 3;
+}
+
+
+
+
+/* 登録用 ーーーーーーーーーーーーーーーーーーーーーーーーー */
+
+.form_box .error_list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.back_to_login {
+    text-align: center;
+    margin-top: 80px;
+    clear: both;
+}
+
+.back_to_login a {
+    color: #fff;
+}
+
+/* Added ーーーーーーーーーーーーーーーーーーーーーーーーー */
+
+.added_box {
+    background-color: rgba(122, 148, 114, 0.3);
+    padding: 60px 40px;
+    border-radius: 12px;
+    width: 500px;
+    text-align: center;
+    line-height: 1.8;
+    color: #fff;
+}
+
+#messageContent .welcome_text {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#messageContent .message_body {
+    margin: 30px 0;
+    font-size: 16px;
+}
+
+.btn_link_container {
+    margin-top: 40px;
+}
+
+.added_box .btn_red {
+    display: inline-block;
+    background-color: #ff4d61;
+    color: #fff;
+    padding: 10px 40px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.added_box .btn_red:hover {
+    background-color: #e64456;
+    color: #fff;
+    text-decoration: none;
+}

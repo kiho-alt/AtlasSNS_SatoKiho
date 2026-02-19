@@ -1,22 +1,644 @@
 @charset "utf-8";
-html{
-}
-body{
-}
-/* header */
-header{
-    background:#186AC9;
-}
 
-/* main content */
-#row{
+
+/*Navigationーーーーーーーーーーーーーーーーーーーーーーーー*/
+#mainRow {
     display: flex;
     flex-flow: row wrap;
+    min-height: 100vh;
+    font-size: 16px;
 }
-#container{
+
+#mainContainer {
     flex: 0 0 80%;
 }
-#side-bar{
-    flex: 0 0 19%;
+
+#sideBr {
+    flex: 0 0 20%;
     border-left: 1px solid #727272;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.side_username {
+    margin-bottom: 20px;
+}
+
+.side_row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.side_btn_container {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+/* 共通ボタン設定 */
+#sideBr .side_btn,
+#sideBr .side_search_btn {
+    display: inline-block;
+    background-color: #186ac9;
+    color: #fff;
+    text-decoration: none;
+    width: 120px;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 5px;
+    font-size: 0.8em;
+    box-sizing: border-box;
+}
+
+#sideBr .side_btn:hover,
+#sideBr .side_search_btn:hover {
+    background-color: #1458a5;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* 区切り */
+.side_separator {
+    border: none;
+    border-top: 1px solid #727272;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.side_search_container {
+    text-align: center;
+}
+
+#sideBr .side_search_btn {
+    width: 140px;
+}
+
+
+/*共通パーツーーーーーーーーーーーーーーーーーーーーーーーー*/
+
+.icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+
+.btn-danger {
+    background-color: #e64456;
+    border-color: #e64456;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #d03a4a;
+    border-color: #d03a4a;
+}
+
+.alert-danger {
+    color: red;
+    margin-top: 5px;
+    border: 1px solid red;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.error_message_area {
+    background-color: transparent;
+    padding: 0;
+    color: #ff4d61;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+
+
+/* Headerーーーーーーーーーーーーーーーーーーーーーーーーー*/
+header {
+    background: #186ac9;
+}
+
+#head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #186ac2;
+    padding: 10px 20px;
+    color: #fff;
+    /* ショートハンド */
+}
+
+.nav_container {
+    position: relative;
+}
+
+.nav_info {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 15px;
+}
+
+.nav_username {
+    margin: 0;
+    line-height: 1;
+    font-size: 18px;
+}
+
+.nav_icon_wrap {
+    display: inline-block;
+}
+
+.nav_arrow {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(45deg);
+    margin: 0 10px 5px 15px;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.nav_arrow.is_active {
+    transform: rotate(-135deg);
+    margin-bottom: -2px;
+}
+
+.nav_menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: -20px;
+    width: 200px;
+    background-color: #fff;
+    border: 1px solid #00008b;
+    z-index: 100;
+    border-radius: 4px;
+}
+
+.menu_item a {
+    display: block;
+    padding: 15px;
+    color: #333;
+    text-align: center;
+    text-decoration: none;
+}
+
+.menu_item a:hover {
+    background-color: #00008b;
+    color: #fff;
+}
+
+
+
+
+
+/*Topページ（投稿ページ）ーーーーーーーーーーーーーーーーー*/
+.post_form_container {
+    display: flex;
+    gap: 15px;
+    padding: 30px 5%;
+    border-bottom: 5px solid #eee;
+}
+
+.post_form {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+    flex: 1;
+}
+
+.post_input_group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.post_textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 16px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.btn_post_submit {
+    border: none;
+    background: none;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.post_submit_img {
+    width: 45px;
+}
+
+/* タイムライン */
+.post_item {
+    display: flex;
+    gap: 15px;
+    padding: 23px 10%;
+    border-top: 1px solid #eee;
+}
+
+.post_content {
+    flex: 1;
+}
+
+.post_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post_user_name {
+    font-weight: bold;
+}
+
+.post_date {
+    color: #999;
+    font-size: 0.8em;
+}
+
+.post_text {
+    margin: 10px 0;
+    word-break: break-all;
+}
+
+.post_button_group {
+    text-align: right;
+}
+
+/* ホバー時のリンク線残り削除 */
+.post_button_group a:hover {
+    text-decoration: none;
+}
+
+/* 紙飛行機hover */
+.post_icon_normal,
+.post_icon_hover {
+    width: 30px;
+    cursor: pointer;
+}
+
+.post_icon_hover {
+    display: none;
+}
+
+.action_icon_wrap,
+.modal_submit_img_wrap {
+    display: inline-block;
+}
+
+.js-modal-open:hover .post_icon_normal,
+.js-modal-delete-open:hover .post_icon_normal {
+    display: none;
+}
+
+.js-modal-open:hover .post_icon_hover,
+.js-modal-delete-open:hover .post_icon_hover {
+    display: inline-block;
+}
+
+
+
+/*検索ページーーーーーーーーーーーーーーーーーーーーーーーーー*/
+.search_form_area {
+    display: flex;
+    align-items: center;
+    padding: 30px 10%;
+    gap: 20px;
+}
+
+.search_form {
+    display: flex;
+    align-items: center;
+}
+
+.search_input {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search_btn_wrap {
+    display: inline-block;
+}
+
+.search_btn_img {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.search_btn_img img {
+    width: 35px;
+}
+
+.search_divider {
+    border: none;
+    border-top: 5px solid #eee;
+    margin-bottom: 30px;
+}
+
+.search_word_display {
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+/* リスト */
+.user_list {
+    padding-bottom: 50px;
+}
+
+.user_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+    margin: 0 auto 20px;
+}
+
+.user_info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user_icon_wrap {
+    display: inline-block;
+}
+
+.user_icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    object-fit: cover;
+    vertical-align: bottom;
+}
+
+.user_name {
+    font-weight: bold;
+}
+
+/* フォローボタン */
+.follow_btn_area {
+    min-width: 120px;
+    text-align: right;
+}
+
+/*プロフィール編集ページーーーーーーーーーーーーーーーーーー*/
+#profileContainer {
+    padding: 50px 0;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.profile_item_wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.profile_icon_current_wrap {
+    display: inline-block;
+}
+
+.profile_field_row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 50px;
+}
+
+.profile_field_row .field_label {
+    width: 150px;
+    font-weight: bold;
+}
+
+.profile_field_row .field_input,
+.profile_field_row .field_textarea {
+    width: 350px;
+    padding: 8px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+.file_upload_area {
+    width: 350px;
+}
+
+.profile_submit_area {
+    text-align: center;
+}
+
+.btn_update {
+    background-color: #ff4b4b;
+    color: #fff;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn_update:hover {
+    background-color: #e64444;
+}
+
+/* プロフィールエリアーーーーーーーーーーーーーーーーーーー */
+.user_profile_top {
+    display: flex;
+    padding: 40px 10%;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.user_profile_icon_wrap {
+    display: inline-block;
+}
+
+.user_profile_details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile_row {
+    display: flex;
+    gap: 50px;
+}
+
+.profile_label {
+    font-weight: bold;
+    min-width: 80px;
+}
+
+.profile_data {
+    color: #333;
+}
+
+.timeline_divider {
+    border-bottom: 5px solid #eee;
+}
+
+/* 投稿 */
+.post_item {
+    display: flex;
+    gap: 15px;
+    padding: 20px 15%;
+    border-bottom: 1px solid #eee;
+}
+
+.user_icon_small {
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.post_content {
+    flex: 1;
+}
+
+.post_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post_user_name {
+    font-weight: bold;
+}
+
+.post_date {
+    color: #999;
+    font-size: 0.8em;
+}
+
+.post_text {
+    line-height: 1.6;
+    word-break: break-all;
+}
+
+.no_post {
+    text-align: center;
+    padding: 50px;
+    color: #999;
+}
+
+/* Follow&Followerーーーーーーーーーーーーーーーーーーーー*/
+.list_header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 5%;
+}
+
+.list_title {
+    font-size: 20px;
+    margin: 0;
+    width: 200px;
+}
+
+.user_icons_area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.user_icon_link {
+    display: inline-block;
+}
+
+.user_icon_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* 規約：丸いアイコン */
+    object-fit: cover;
+}
+
+/* 区切り線 */
+
+.list_divider {
+    border: none;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    border-top: 5px solid #eee;
+    /* ショートハンド */
+}
+
+/* タイムライン */
+.timeline .post_item:first-child {
+    border-top: none;
+}
+
+.post_item {
+    display: flex;
+    gap: 15px;
+    padding: 20px 13%;
+    border-bottom: 1px solid #eee;
+}
+
+.post_icon_wrap {
+    flex-shrink: 0;
+}
+
+.post_user_icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.post_content {
+    flex: 1;
+}
+
+.post_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post_user_name {
+    font-weight: bold;
+}
+
+.post_date {
+    color: #999;
+    font-size: 13px;
+}
+
+.post_text {
+    margin: 10px 0;
+    line-height: 1.6;
+    word-break: break-all;
+}
+
+/* 空の状態のメッセージ */
+.empty_message {
+    text-align: center;
+    padding: 50px;
+    color: #999;
 }
