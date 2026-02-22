@@ -26,7 +26,8 @@ class ProfileController extends Controller
     $request->validate([
         'username'     => 'required|string|min:2|max:12',
         'email'        => ['required', 'string', 'email', 'min:5', 'max:40', Rule::unique('users')->ignore($user->id)],
-        'new_password' => 'nullable|string|alpha_num|min:8|max:20|confirmed',
+        'new_password'              => 'required|alpha_num|min:8|max:20|confirmed',
+        'new_password_confirmation' => 'required|alpha_num',
         'images'       => 'nullable|image|mimes:jpg,png,bmp,gif,svg',
         'bio'          => 'nullable|string|max:150',
     ], [
@@ -41,8 +42,10 @@ class ProfileController extends Controller
         'email.unique'   => 'このメールアドレスは既に登録されています。',
 
         'new_password.required'  => 'パスワードは必須項目です。',
+        'new_password.alpha_num' => 'パスワードは英数字のみで入力してください。',
         'new_password.min'       => 'パスワードは8文字以上で入力してください。',
         'new_password.max'       => 'パスワードは20文字以内で入力してください。',
+        'new_password_confirmation.required'  => '確認用パスワードは必須項目です。',
         'new_password.confirmed' => 'パスワードが確認用と一致しません。',
 
         'images.mimes' => '画像の形式はjpg, png, bmp, gif, svgで登録してください。',
@@ -73,7 +76,7 @@ class ProfileController extends Controller
 
     $user->save();
 
-    return back()->with('status', 'プロフィール情報を更新しました');
+    return redirect()->route('top');
 }
 
     //他人のプロフィール情報取得

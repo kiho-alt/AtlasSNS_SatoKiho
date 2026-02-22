@@ -3,15 +3,17 @@
         <div class="list_header">
             <h2 class="list_title">フォロワーリスト</h2>
 
-            <div class="user_icons_area">
-                @forelse($followers as $user)
-                    <a href="{{ route('user.profile', ['id' => $user->id]) }}" class="user_icon_link">
-                        <img src="{{ $user->getIconPath() }}" alt="icon" class="user_icon_img">
-                    </a>
-                @empty
-                    <p class="empty_message">現在フォロワーはいません。</p>
-                @endforelse
-            </div>
+            @if($followers->count() > 0)
+                <div class="user_icons_area">
+                    @foreach($followers as $user)
+                        <a href="{{ route('user.profile', ['id' => $user->id]) }}" class="user_icon_link">
+                            <img src="{{ $user->getIconPath() }}" alt="icon" class="user_icon_img">
+                        </a>
+                    @endforeach
+                </div>
+            @else
+                <p class="empty_message">現在フォロワーはいません。</p>
+            @endif
         </div>
 
         <hr class="list_divider">
@@ -33,7 +35,7 @@
                     </div>
                 </div>
             @empty
-                <p class="empty_message">フォローしているユーザーの投稿がありません。</p>
+                <p class="empty_message">フォロワーの投稿がありません。</p>
             @endforelse
         </div>
     </main>

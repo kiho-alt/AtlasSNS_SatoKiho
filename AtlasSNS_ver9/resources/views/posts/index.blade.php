@@ -63,8 +63,14 @@
             <div class="modal_content">
                 <form action="{{ route('post.update') }}" method="POST">
                     @csrf
-                    <textarea name="up_post" class="modal_post modal_post_textarea"></textarea>
-                    <input type="hidden" name="id" class="modal_id">
+                    <textarea name="up_post" class="modal_post modal_post_textarea">@if($errors->has('up_post')){{ old('up_post') }}@endif</textarea>
+                    <input type="hidden" name="id" class="modal_id" value="@if($errors->has('up_post')){{ old('id') }}@endif">
+
+                    @if ($errors->has('up_post'))
+                        <div class="error_message_area">
+                            <p class="error_message">{{ $errors->first('up_post') }}</p>
+                        </div>
+                    @endif
 
                     <div class="modal_submit_area">
                         <button type="submit" class="btn_modal_submit">
@@ -82,10 +88,21 @@
             <div class="modal_content_delete">
                 <p class="delete_confirm_text">この投稿を削除します。よろしいでしょうか？</p>
                 <div class="delete_button_area">
-                    <a class="js-modal-close btn_cancel" href="">キャンセル</a>
                     <a class="btn-real-delete btn_real_delete" href="">OK</a>
+                    <a class="js-modal-close btn_cancel" href="">キャンセル</a>
                 </div>
             </div>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                @if ($errors->has('up_post'))
+                    // ページ構成が読み込まれた直後に、強制的にモーダルを表示
+                    var editModal = document.querySelector('.js-modal');
+                    if (editModal) {
+                        editModal.style.display = 'block';
+                    }
+                @endif
+            });
+        </script>
     </main>
 </x-login-layout>

@@ -37,7 +37,7 @@
             @forelse($posts as $post)
                 <div class="post_item">
                     <div class="post_icon_wrap">
-                        <img src="{{ $user->getIconPath() }}" alt="icon" class="user_icon_small">
+                        <img src="{{ $user->getIconPath() }}" alt="icon" class="icon">
                     </div>
                     <div class="post_content">
                         <div class="post_header">

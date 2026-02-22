@@ -35,12 +35,12 @@
 
                     <div class="profile_field_row">
                         <label class="field_label">パスワード</label>
-                        <input type="password" name="new_password" placeholder="●●●●●●●●" class="field_input">
+                        <input type="password" name="new_password" class="field_input">
                     </div>
 
                     <div class="profile_field_row">
                         <label class="field_label">パスワード確認</label>
-                        <input type="password" name="new_password_confirmation" placeholder="●●●●●●●●" class="field_input">
+                        <input type="password" name="new_password_confirmation" class="field_input">
                     </div>
 
                     <div class="profile_field_row">

@@ -12,9 +12,11 @@
                     </div>
                 </form>
 
-                @if(!empty($keyword))
-                    <p class="search_word_display">検索ワード：{{ $keyword }}</p>
-                @endif
+                <div class="search_word_wrapper">
+                    @if(!empty($keyword))
+                        <p class="search_word_display">検索ワード：{{ $keyword }}</p>
+                    @endif
+                </div>
             </div>
             <p class="search_divider"></p>
         </div>

@@ -4,13 +4,17 @@
             <h2 class="list_title">フォローリスト</h2>
 
             <div class="user_icons_area">
-                @forelse($follows as $user)
-                    <a href="{{ route('user.profile', ['id' => $user->id]) }}" class="user_icon_link">
-                        <img src="{{ $user->getIconPath() }}" alt="icon" class="user_icon_img">
-                    </a>
-                @empty
-                    <p class="empty_message">現在フォローしているユーザーはいません。</p>
-                @endforelse
+                @if($follows->count() > 0)
+                <div class="user_icons_area">
+                    @foreach($follows as $user)
+                        <a href="{{ route('user.profile', ['id' => $user->id]) }}" class="user_icon_link">
+                            <img src="{{ $user->getIconPath() }}" alt="icon" class="user_icon_img">
+                        </a>
+                    @endforeach
+                </div>
+                    @else
+                        <p class="empty_message">現在フォローしているユーザーはいません。</p>
+                    @endif
             </div>
         </div>
 

@@ -48,24 +48,25 @@ public function create(Request $request)
 
 //投稿編集（モーダル）
 public function update(Request $request)
-{
-    $request->validate([
-        'up_post' => 'required|string|min:1|max:150',
-    ]);
-
-    //モーダルから送られてきた内容取得
-    $id = $request->input('id');
-    $up_post = $request->input('up_post');
-
-    //該当の投稿を更新@DB
-    Post::where('id', $id)
-        ->where('user_id', \Auth::id())
-        ->update([
-            'post' => $up_post
+    {
+        $request->validate([
+            'up_post' => 'required|string|min:1|max:150',
+        ], [
+            'up_post.required' => '更新内容は必須項目です。',
+            'up_post.max'      => '投稿は150文字以内で入力してください。',
         ]);
 
-    return redirect('/top');
-}
+        $post_id = $request->input('id');
+        $up_post = $request->input('up_post');
+
+        Post::where('id', $post_id)
+            ->where('user_id', Auth::id())
+            ->update([
+                'post' => $up_post
+            ]);
+
+        return redirect()->route('top');
+    }
 
 //投稿削除
 public function delete($id)
