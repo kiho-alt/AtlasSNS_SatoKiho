@@ -3,7 +3,7 @@
         <h1 class="main_logo">
             <a href="{{ route('top') }}">
                 <div class="logo_wrap">
-                    <img src="{{ asset('images/atlas.png') }}" alt="Atlas">
+                    <img src="{{ asset('images/atlas.png') }}" alt="Atlas" class="atlas-logo">
                 </div>
             </a>
         </h1>

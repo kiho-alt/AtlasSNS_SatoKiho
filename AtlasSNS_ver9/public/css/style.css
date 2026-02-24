@@ -80,6 +80,10 @@
 
 
 /*共通パーツーーーーーーーーーーーーーーーーーーーーーーーー*/
+.atlas-logo {
+    width: 150px;
+    height: 50px;
+}
 
 .icon {
     width: 60px;

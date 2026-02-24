@@ -54,6 +54,7 @@ class RegisteredUserController extends Controller
 
         'password.confirmed' => 'パスワードが確認用と一致しません。',
         'password_confirmation.required'  => 'パスワード（確認用）は必須項目です。',
+        'password_confirmation.alpha_num' => 'パスワード（確認用）は英数字で入力してください。',
         ]);
         //バリデーションをを通過できたら、ユーザ作成処理実行
         $user = User::create([//←セッション書き込み用に変数に入れておく
