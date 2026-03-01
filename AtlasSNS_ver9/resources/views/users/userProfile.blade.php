@@ -12,7 +12,7 @@
                 </div>
                 <div class="profile_row">
                     <span class="profile_label">自己紹介</span>
-                    <span class="profile_data">{{ $user->bio ?? '自己紹介はまだありません' }}</span>
+                    <span class="profile_data">{!! nl2br(e($user->bio ?? '自己紹介はまだありません')) !!}</span>
                 </div>
             </div>
 

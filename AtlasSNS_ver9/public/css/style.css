@@ -513,6 +513,7 @@ header {
     font-weight: bold;
     width: 80px;
     text-align-last: justify;
+    flex-shrink: 0;
 }
 
 .user_profile_action {
@@ -521,6 +522,7 @@ header {
 
 .profile_data {
     color: #333;
+    word-break: break-all;
 }
 
 .timeline_divider {
